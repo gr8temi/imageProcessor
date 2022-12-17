@@ -1,5 +1,5 @@
 import "./App.css";
-import React, { useCallback, useEffect } from "react";
+import React, { useEffect } from "react";
 import {
   Card,
   Col,
@@ -18,7 +18,7 @@ import { useQuery } from "react-query";
 import { InteractionOutlined } from "@ant-design/icons";
 import useImageAnalyzer from "./hooks/useImageAnalyzer";
 
-const { Header, Content, Footer } = Layout;
+const { Header, Content } = Layout;
 const { Meta } = Card;
 const { Title, Text } = Typography;
 
@@ -29,7 +29,7 @@ const App = () => {
 
   const [api, contextHolder] = message.useMessage();
 
-  const { isLoading, error, data } = useQuery("images", () =>
+  const { isLoading, data } = useQuery("images", () =>
     fetch("http://127.0.0.1:5002/image/list/").then((res) => res.json())
   );
 
