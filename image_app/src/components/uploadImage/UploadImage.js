@@ -44,10 +44,13 @@ const UploadImage = () => {
         formData.append("image", image);
 
         try {
-          const response = await fetch("http://127.0.0.1:5002/image/upload/", {
-            method: "POST",
-            body: formData,
-          }).then((res) => res.json());
+          const response = await fetch(
+            `${process.env.REACT_APP_BASE_URL}upload/`,
+            {
+              method: "POST",
+              body: formData,
+            }
+          ).then((res) => res.json());
           setImages([response, ...images]);
           setImageURL("setImageURL");
           message.success("Image uploaded successfully");
@@ -90,7 +93,7 @@ const UploadImage = () => {
   const props = {
     name: "image",
     multiple: false,
-    action: "http://127.0.0.1:5002/image/upload/",
+    action: `${process.env.REACT_APP_BASE_URL}upload/`,
     onChange(info) {
       const { status } = info.file;
       if (status !== "uploading") {

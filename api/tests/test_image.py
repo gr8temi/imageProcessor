@@ -12,7 +12,7 @@ def create_app():
 
     db.init_app(app)
 
-    app.register_blueprint(urls, url_prefix="/image")
+    app.register_blueprint(urls, url_prefix="/")
     return app
 
 
@@ -39,7 +39,7 @@ def client(app):
 
 
 def test_index_route(client):
-    response = client.get("/image/")
+    response = client.get("/")
 
     assert response.status_code == 201
 
@@ -48,12 +48,12 @@ def test_analyse_image(app, client):
 
     with app.app_context():
 
-        response = client.get("/image/analyse_image/1/")
+        response = client.get("/analyse_image/1/")
         assert response.status_code == 200
         assert response.json == {"height": 2160, "width": 3840}
 
         # Test retrieving image information with an invalid image ID
-        response = client.get("/image/analyse_image/999/")
+        response = client.get("/analyse_image/999/")
         assert response.status_code == 404
         assert response.json == {"message": "We don't have an image with the given ID 999"}
 
@@ -62,7 +62,7 @@ def test_image_list(app, client):
 
     with app.app_context():
 
-        response = client.get("/image/list_images/")
+        response = client.get("/list_images/")
         assert len(response.json) == 2
         assert response.status_code == 200
 
@@ -73,7 +73,7 @@ def test_upload_image(app, client):
         image_file = open(f"{os.path.abspath('tests')}/test_files/test.jpeg", "rb")
 
         # Send a POST request to the endpoint with the image file in the request
-        response = client.post("/image/upload/", data={"image": image_file})
+        response = client.post("/upload/", data={"image": image_file})
 
         # Check that the response status code is 201 (created)
         assert response.status_code == 201

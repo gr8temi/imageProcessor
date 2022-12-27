@@ -14,7 +14,7 @@ app.register_error_handler(FileNotFoundError, handle_404)
 db.init_app(app)
 migrate = Migrate(app, db)
 
-app.register_blueprint(urls, url_prefix="/image")
+app.register_blueprint(urls, url_prefix="/")
 
 if __name__ == "__main__":
     app.debug = True

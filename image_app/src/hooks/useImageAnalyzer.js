@@ -10,7 +10,7 @@ const useImageAnalyzer = ({ imageId }) => {
   const imageAnalyze = useQuery(
     key,
     () =>
-      fetch(`http://127.0.0.1:5002/image/analyse_image/${imageId}/`).then(
+      fetch(`${process.env.REACT_APP_BASE_URL}analyse_image/${imageId}/`).then(
         (res) => res.json()
       ),
     {

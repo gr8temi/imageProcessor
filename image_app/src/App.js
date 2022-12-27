@@ -30,7 +30,9 @@ const App = () => {
   const [api, contextHolder] = message.useMessage();
 
   const { isLoading, data } = useQuery("images", () =>
-    fetch("http://127.0.0.1:5002/image/list_images/").then((res) => res.json())
+    fetch(`${process.env.REACT_APP_BASE_URL}/list_images/`).then((res) =>
+      res.json()
+    )
   );
 
   const { imageAnalyzeDataLoading, imageAnalyzeData, imageAnalyzeDataError } =
@@ -113,7 +115,7 @@ const App = () => {
                   cover={
                     <Image
                       alt="example"
-                      src={`http://127.0.0.1:5002/image/${ele.image_name}`}
+                      src={`${process.env.REACT_APP_BASE_URL}${ele.image_name}`}
                       width="100"
                       height="400px"
                     />
@@ -152,7 +154,7 @@ const App = () => {
         <Row gutter={16}>
           <Col span="12">
             <Image
-              src={`http://127.0.0.1:5002/image/${modalContent.image_name}`}
+              src={`${process.env.REACT_APP_BASE_URL}${modalContent.image_name}`}
             ></Image>
           </Col>
           <Col span="12">
