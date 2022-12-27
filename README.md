@@ -1,6 +1,14 @@
 # imageProcessor
+## Steps to run application
+### Step 1
+Change permission on `entrypoint.sh` file by running 
+```
+chmod +x api/entrypoint.sh
+```
 
+### Step 2
 To run the app in a Docker container, you will need to have Docker installed on your machine. If you do not have Docker installed, you can download it from the official Docker website (https://www.docker.com/).
+
 
 Once you have Docker installed, follow these steps to run the app in a Docker container:
 
