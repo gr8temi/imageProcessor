@@ -30,7 +30,7 @@ const App = () => {
   const [api, contextHolder] = message.useMessage();
 
   const { isLoading, data } = useQuery("images", () =>
-    fetch(`${process.env.REACT_APP_BASE_URL}/list_images/`).then((res) =>
+    fetch(`${process.env.REACT_APP_BASE_URL}list_images/`).then((res) =>
       res.json()
     )
   );
