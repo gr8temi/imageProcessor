@@ -30,7 +30,7 @@ const App = () => {
   const [api, contextHolder] = message.useMessage();
 
   const { isLoading, data } = useQuery("images", () =>
-    fetch("http://127.0.0.1:5002/image/list/").then((res) => res.json())
+    fetch("http://127.0.0.1:5002/image/list_images/").then((res) => res.json())
   );
 
   const { imageAnalyzeDataLoading, imageAnalyzeData, imageAnalyzeDataError } =
@@ -147,6 +147,7 @@ const App = () => {
         open={showModal && imageAnalyzeData && !imageAnalyzeData?.error}
         width={1000}
         onCancel={() => setShowModal(false)}
+        footer={null}
       >
         <Row gutter={16}>
           <Col span="12">

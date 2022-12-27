@@ -10,8 +10,8 @@ const useImageAnalyzer = ({ imageId }) => {
   const imageAnalyze = useQuery(
     key,
     () =>
-      fetch(`http://127.0.0.1:5002/image/analyze/${imageId}/`).then((res) =>
-        res.json()
+      fetch(`http://127.0.0.1:5002/image/analyse_image/${imageId}/`).then(
+        (res) => res.json()
       ),
     {
       enabled: !!imageId,

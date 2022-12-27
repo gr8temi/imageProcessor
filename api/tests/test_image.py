@@ -44,16 +44,16 @@ def test_index_route(client):
     assert response.status_code == 201
 
 
-def test_analyze_image(app, client):
+def test_analyse_image(app, client):
 
     with app.app_context():
 
-        response = client.get(f"/image/analyze/1/")
+        response = client.get("/image/analyse_image/1/")
         assert response.status_code == 200
         assert response.json == {"height": 2160, "width": 3840}
 
         # Test retrieving image information with an invalid image ID
-        response = client.get("/image/analyze/999/")
+        response = client.get("/image/analyse_image/999/")
         assert response.status_code == 404
         assert response.json == {"message": "We don't have an image with the given ID 999"}
 
@@ -62,7 +62,7 @@ def test_image_list(app, client):
 
     with app.app_context():
 
-        response = client.get("/image/list/")
+        response = client.get("/image/list_images/")
         assert len(response.json) == 2
         assert response.status_code == 200
 
